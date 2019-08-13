@@ -1,6 +1,6 @@
 FROM ruby:2.5
 
-RUN apt-get update && apt-get upgrade && apt-get dist-upgrade
+RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y
 
 COPY . ./
 
