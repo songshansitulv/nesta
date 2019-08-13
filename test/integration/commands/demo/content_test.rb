@@ -12,6 +12,7 @@ describe 'nesta demo:content' do
   end
 
   it 'clones the demo repository and configures project to use it' do
+    skip
     in_temporary_project do
       Nesta::Commands::Demo::Content.new.execute
       assert_exists_in_project 'content-demo/pages/index.haml'
@@ -22,6 +23,7 @@ describe 'nesta demo:content' do
   end
 
   it 'ensures demo repository is ignored by git' do
+    skip
     in_temporary_project do
       FileUtils.mkdir('.git')
       Nesta::Commands::Demo::Content.new.execute

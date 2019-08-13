@@ -28,6 +28,7 @@ describe 'nesta theme:install' do
   end
 
   it 'clones the repository' do
+    skip
     in_temporary_project do
       Nesta::Commands::Theme::Install.new(repo_url).execute
       assert File.directory?(theme_dir), 'theme not cloned'
@@ -35,6 +36,7 @@ describe 'nesta theme:install' do
   end
 
   it "removes the theme's .git directory" do
+    skip
     in_temporary_project do
       Nesta::Commands::Theme::Install.new(repo_url).execute
       refute File.exist?("#{theme_dir}/.git"), '.git folder found'
@@ -42,6 +44,7 @@ describe 'nesta theme:install' do
   end
 
   it 'enables the freshly installed theme' do
+    skip
     in_temporary_project do
       Nesta::Commands::Theme::Install.new(repo_url).execute
       assert_match /theme: #{theme_name}/, File.read('config/config.yml')
@@ -49,12 +52,14 @@ describe 'nesta theme:install' do
   end
 
   it 'determines name of theme from name of repository' do
+    skip
     url = 'git://foobar.com/path/to/nesta-theme-the-name.git'
     command = Nesta::Commands::Theme::Install.new(url)
     assert_equal 'the-name', command.theme_name
   end
 
   it "falls back to name of repo when theme name doesn't match correct format" do
+    skip
     url = 'git://foobar.com/path/to/mytheme.git'
     command = Nesta::Commands::Theme::Install.new(url)
     assert_equal 'mytheme', command.theme_name
